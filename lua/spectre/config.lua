@@ -2,15 +2,15 @@ local api = vim.api
 
 ---@class SpectreConfig
 local config = {
-    filetype         = "spectre_panel",
-    namespace        = api.nvim_create_namespace("SEARCH_PANEL"),
-    namespace_ui     = api.nvim_create_namespace("SEARCH_PANEL_UI"),
-    namespace_header = api.nvim_create_namespace("SEARCH_PANEL_HEADER"),
-    namespace_status = api.nvim_create_namespace("SEARCH_PANEL_STATUS"),
-    namespace_result = api.nvim_create_namespace("SEARCH_PANEL_RESULT"),
+    filetype           = "spectre_panel",
+    namespace          = api.nvim_create_namespace("SEARCH_PANEL"),
+    namespace_ui       = api.nvim_create_namespace("SEARCH_PANEL_UI"),
+    namespace_header   = api.nvim_create_namespace("SEARCH_PANEL_HEADER"),
+    namespace_status   = api.nvim_create_namespace("SEARCH_PANEL_STATUS"),
+    namespace_result   = api.nvim_create_namespace("SEARCH_PANEL_RESULT"),
 
-    lnum_UI = 8, -- total line for ui you can edit it
-    line_result = 10, -- line begin result
+    lnum_UI            = 8, -- total line for ui you can edit it
+    line_result        = 10, -- line begin result
 
     -- result_padding = '│  ',
     -- color_devicons = true,
@@ -18,9 +18,9 @@ local config = {
     -- result_padding     = '¦  ',
     -- line_sep = '├──────────────────────────────────────',
 
-    line_sep_start = '┌──────────────────────────────────────────────────────',
-    result_padding = '│  ',
-    line_sep       = '└──────────────────────────────────────────────────────',
+    line_sep_start     = '┌──────────────────────────────────────────────────────',
+    result_padding     = '│  ',
+    line_sep           = '└──────────────────────────────────────────────────────',
     color_devicons     = true,
     open_cmd           = 'vnew',
     live_update        = false,
@@ -31,6 +31,7 @@ local config = {
         filename = "SpectreFile",
         filedirectory = "SpectreDir",
         search = "SpectreSearch",
+        line = "SpectreLine",
         border = "SpectreBorder",
         replace = "SpectreReplace"
     },
@@ -90,6 +91,11 @@ local config = {
             map = "tu",
             cmd = "<cmd>lua require('spectre').toggle_live_update()<CR>",
             desc = "update when vim writes to file"
+        },
+        ['run_current_replace'] = {
+            map = "tp",
+            cmd = "<cmd>lua require('spectre.actions').show_file_preview()<CR>",
+            desc = "preview file"
         },
         -- only work if the find_engine following have that option
         ['toggle_ignore_case'] = {
@@ -200,7 +206,7 @@ local config = {
     replace_vim_cmd    = "cdo",
     is_open_target_win = true,
     is_insert_mode     = false,
-    is_block_ui_break = false,
+    is_block_ui_break  = false,
     open_template      = {}
 }
 
